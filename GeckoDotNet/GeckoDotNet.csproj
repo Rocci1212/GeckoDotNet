@@ -46,12 +46,35 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AddressRange.cs" />
+    <Compile Include="BPList.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="BPList.Designer.cs">
+      <DependentUpon>BPList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="HistoryTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="HistoryTextBox.Designer.cs">
+      <DependentUpon>HistoryTextBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ValidMemory.cs" />
     <None Include="external\Config.cs" />
     <None Include="external\Events.cs" />
     <None Include="external\IProfile.cs" />
     <None Include="external\Profile.cs" />
     <None Include="external\Xml.cs" />
     <None Include="external\XmlHelper.cs" />
+    <Compile Include="AddressTextBox.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="AddressTextBox.Designer.cs">
+      <DependentUpon>AddressTextBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ByteSwap.cs" />
+    <Compile Include="GlobalFunctions.cs" />
+    <None Include="Logger.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
