@@ -30,17 +30,17 @@ namespace GeckoDotNet
             public int nPos;
             public int nTrackPos;
         };
-        /*
         private USBGecko gecko;
         private MemSearch search;
         private MemoryViewer viewer;
         private Breakpoints bpHandler;
         private Disassembly disassembler;
         private WatchList watcher;
+        /*
         private FST fst;
-
+        */
         private ExceptionHandler exceptionHandling;
-
+        /*
         private WatchDialog addWatchDialog;
         private ValueInput watchValueInput;
         */
@@ -81,13 +81,9 @@ namespace GeckoDotNet
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-            /*
             this.Icon = Icon.ExtractAssociatedIcon(System.Reflection.Assembly.GetEntryAssembly().Location);
 
             int i;
-            SettingsFile = new Xml("gecko.xml");
-            SettingsFile.RootName = "gecko";
 
             gamename = "";
             gecko = new USBGecko();
@@ -208,15 +204,17 @@ namespace GeckoDotNet
             MEM2UpperBoundary.SelectedIndex = 0;
 
             // Restore previous settings
-            checkBoxAlwaysOnTop.Checked = GeckoApp.Properties.Settings.Default.AlwaysOnTop;
-            numericUpDownFPS.Value = GeckoApp.Properties.Settings.Default.FPS;
-            BPAddress.Text = GeckoApp.Properties.Settings.Default.BPAddr;
-            memViewAValue.Text = GeckoApp.Properties.Settings.Default.MemViewAddr;
-            BPType.SelectedIndex = GeckoApp.Properties.Settings.Default.BPType;
-            checkBoxBPNext.Checked = GeckoApp.Properties.Settings.Default.BPNext;
-            checkBoxPauseCodes.Checked = GeckoApp.Properties.Settings.Default.PauseCodes;
+            checkBoxAlwaysOnTop.Checked = Properties.Settings.Default.AlwaysOnTop;
+            numericUpDownFPS.Value = Properties.Settings.Default.FPS;
+            BPAddress.Text = Properties.Settings.Default.BPAddr;
+            memViewAValue.Text = Properties.Settings.Default.MemViewAddr;
+            BPType.SelectedIndex = Properties.Settings.Default.BPType;
+            checkBoxBPNext.Checked = Properties.Settings.Default.BPNext;
+            checkBoxPauseCodes.Checked = Properties.Settings.Default.PauseCodes;
+            /*
             Size = GeckoApp.Properties.Settings.Default.LastSize;
-            int oldSplitter = GeckoApp.Properties.Settings.Default.LastSplitterSize;
+            */
+            int oldSplitter = Properties.Settings.Default.LastSplitterSize;
             // The splitter gets moved when the breakpoint page is entered
             // so artificially force it to move
             MainControl.SelectedTab = BreakpointPage;
@@ -227,7 +225,6 @@ namespace GeckoDotNet
             viewFloatsInHexToolStripMenuItem.Checked = GeckoApp.Properties.Settings.Default.ViewFloatsInHex;
             //addressTextBox1.CopyStringToHistory(GeckoApp.Properties.Settings.Default.addressHistory);
             //addressTextBox1.AutoHistory = true;
-            */
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
