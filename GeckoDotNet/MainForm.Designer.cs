@@ -3656,7 +3656,7 @@
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(530, 42);
             this.label12.TabIndex = 1;
-            this.label12.Text = resources.GetString("label12.Text");
+            this.label12.Text = "Normally Gecko dotNET limits you to poke/dump only certain address ranges. In fact: there are more ranges (like the 7Fxxxxxx range in GameCube mode). Selecting this will disable all protections allowing you to access EVERY address. Attention: selecting an invalid address will crash the game, NO WAY BACK!";
             this.label12.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // ToolsDisableProtection
@@ -3676,7 +3676,7 @@
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(536, 42);
             this.label11.TabIndex = 0;
-            this.label11.Text = resources.GetString("label11.Text");
+            this.label11.Text = "Note to WiiRd GUI users: a Pointer Search is NOT planned for Gecko dotNET. Mainly because the search itself in the pointer does not require a USB connection. Thus I do plan to enable pointer searches using an external application. However: for the creation of memory dumps required for pointer searches: use the dump below!";
             this.label11.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // AbtPage
