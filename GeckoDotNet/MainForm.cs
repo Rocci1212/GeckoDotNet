@@ -1813,5 +1813,1031 @@ namespace GeckoDotNet
             
             */
         }
+
+        private void BPStopped(bool hit)
+        {
+            throw new NotImplementedException();
+            /*
+            BPMode(false);
+            */
+        }
+
+        private void BPOutSwap_Click(object sender, EventArgs e)
+        {
+            if (BPList.Visible)
+            {
+                BPList.Hide();
+                BPClassic.Show();
+                BPOutSwap.Text = "Edit view";
+            }
+            else
+            {
+                BPList.Show();
+                BPClassic.Hide();
+                BPOutSwap.Text = "Text view";
+            }
+        }
+
+        private void BPFire_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+            /*
+            BreakpointType bptp;
+
+            BPSkipCount.Text = "0";
+
+            switch (BPType.SelectedIndex)
+            {
+                case 0:
+                    bptp = BreakpointType.Read;
+                    break;
+                case 1:
+                    bptp = BreakpointType.Write;
+                    break;
+                case 2:
+                    bptp = BreakpointType.ReadWrite;
+                    break;
+                default:
+                    bptp = BreakpointType.Execute;
+                    break;
+            }
+
+            bool exact = BPExact.Checked;
+
+            UInt32 bAddress;
+            if (!GlobalFunctions.tryToHex(BPAddress.Text, out bAddress))
+            {
+                MessageBox.Show("Invalid input");
+                return;
+            }
+            if (!ValidMemory.validAddress(bAddress))
+            {
+                MessageBox.Show("Invalid address");
+                return;
+            }
+
+            bpHandler.ClearLogIndent();
+
+            if (bpHandler.SetBreakpoint(bAddress, bptp, exact))
+                BPMode(true);
+            */
+        }
+
+        private void BPCancel_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+            /*
+            bpHandler.CancelBreakpoint();
+            PGame.Text = "Pause Game";
+            */
+        }
+
+        private void BPStepButton_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+            /*
+            try
+            {
+                if (gecko.status() == WiiStatus.Breakpoint)
+                {
+                    gecko.Step();
+                    System.Threading.Thread.Sleep(100);
+                    bpHandler.GetRegisters();
+                    // Color Show Mem according to branch state
+                    UpdateShowMemColor();
+                    UpdateBPCondValue();
+
+                    if (checkBoxLogSteps.Checked)
+                    {
+                        BPStepLogWriter.WriteLine(bpHandler.GetStepLog());
+
+                        BPStepLogWriter.Flush();
+                    }
+                }
+            }
+            catch (EUSBGeckoException exc)
+            {
+                exceptionHandling.HandleException(exc);
+            }
+            */
+        }
+
+
+        private void BPStepOverButton_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+            /*
+            try
+            {
+                if (gecko.status() == WiiStatus.Breakpoint)
+                {
+                    if (bpHandler.stepOver)
+                    {
+                        if (bpHandler.SetBreakpoint(bpHandler.hitAddress + 4, BreakpointType.Execute, true))
+                        {
+                            BPMode(true);
+                        }
+                        bpHandler.DecIndent();  // account for the bl we're skipping over
+                    }
+                    else
+                    {
+                        BPStepButton_Click(sender, e);
+                    }
+                }
+            }
+            catch (EUSBGeckoException exc)
+            {
+                exceptionHandling.HandleException(exc);
+            }
+            */
+        }
+
+        private void BPSkipped(int skipCount)
+        {
+            BPSkipCount.Text = skipCount.ToString();
+        }
+
+        private void BPConditionAdd_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+            /*
+            UInt32 value;
+            if (!GlobalFunctions.tryToHex(BPCondValue.Text, out value))
+            {
+                MessageBox.Show("Invalid value!");
+                return;
+            }
+            int register = BPConditionRegSelect.SelectedIndex;
+            if (register < 0)
+            {
+                MessageBox.Show("Invalid register!");
+                return;
+            }
+            BreakpointComparison condition;
+            switch (BPConditionCompare.SelectedIndex)
+            {
+                case 0:
+                    condition = BreakpointComparison.Equal; break;
+                case 1:
+                    condition = BreakpointComparison.NotEqual; break;
+                case 2:
+                    condition = BreakpointComparison.GreaterEqual; break;
+                case 3:
+                    condition = BreakpointComparison.Greater; break;
+                case 4:
+                    condition = BreakpointComparison.LowerEqual; break;
+                default:
+                    condition = BreakpointComparison.Lower; break;
+            }
+
+            BreakpointCondition cond;
+
+            int index = BPCondList.SelectedIndex;
+
+            if (index > -1)
+            {
+                cond = new BreakpointCondition(register, value, condition, bpHandler.conditions.GetIndexedConditionGroup(index));
+                bpHandler.conditions.Insert(index, cond);
+            }
+            else
+            {
+                cond = new BreakpointCondition(register, value, condition, 1);
+                bpHandler.conditions.Add(cond);
+            }
+
+            // Add and insert will unselect the current item, so let's re-select it
+            BPCondList.SelectedIndex = index;
+            */
+        }
+
+        private void BPCondDel_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+            /*
+            List<int> indices = new List<int>();
+            for (int i = BPCondList.SelectedItems.Count - 1; i >= 0; i--)
+            {
+                indices.Add(BPCondList.SelectedIndices[i]);
+            }
+            BPCondList.ClearSelected();
+            foreach (int index in indices)
+            {
+                bpHandler.conditions.Delete(index);
+            }
+            */
+        }
+
+        private void BPCondClear_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+            /*
+            BPCondList.ClearSelected();
+            bpHandler.conditions.Clear();
+            */
+        }
+
+        private void DisPage_Enter(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+            /*
+            disassembler.DissToBox();
+            */
+        }
+
+        private void DisUpDown_ValueChanged(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+            /*
+            if (DisUpDown.Value == 1)
+                return;
+            if (DisUpDown.Value == 2)
+                disassembler.Decrease();
+            if (DisUpDown.Value == 0)
+                disassembler.Increase();
+
+            DisUpDown.Value = 1;
+            */
+        }
+
+        private void DisUpdateBtn_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+            /*
+            UInt32 vAddress;
+            if (!GlobalFunctions.tryToHex(DisRegion.Text, out vAddress))
+            {
+                MessageBox.Show("Invalid input");
+                return;
+            }
+            if (!ValidMemory.validAddress(vAddress))
+            {
+                MessageBox.Show("Invalid address");
+                return;
+            }
+
+            vAddress &= 0xFFFFFFFC;
+            disassembler.DissToBox(vAddress);
+            */
+        }
+
+        private void DisRegion_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((Byte)e.KeyChar == 13)
+            {
+                DisUpdateBtn_Click(sender, e);
+                e.Handled = true;
+            }
+        }
+
+        private void Assemble_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+            /*
+            // Clean up the assembly text
+            String assembly = AsText.Text;
+            if (assembly == "")
+            {
+                MessageBox.Show("No assembly given");
+                return;
+            }
+
+            string potentialAddress = String.Empty;
+            // Trim any address from a previous history item
+            if (assembly.Length > 8)
+            {
+                potentialAddress = assembly.Substring(0, 8);
+            }
+
+            uint address;
+
+            if (GlobalFunctions.tryToHex(potentialAddress, out address))
+            {
+                // If the address is trimmed, make permanent changes to AsText and AsAddress
+                assembly = assembly.Substring(8);
+                AsText.Text = assembly;
+                AsAddress.Text = GlobalFunctions.toHex((long)address);
+            }
+
+
+            UInt32 vAddress;
+            if (!GlobalFunctions.tryToHex(AsAddress.Text, out vAddress))
+            {
+                MessageBox.Show("Invalid input");
+                return;
+            }
+            if (!ValidMemory.validAddress(vAddress))
+            {
+                MessageBox.Show("Invalid address");
+                return;
+            }
+            vAddress &= 0xFFFFFFFC;
+
+            string oldLine = disassembler.Disassemble(vAddress, 1)[0];
+
+            oldLine = System.Text.RegularExpressions.Regex.Replace(oldLine, ":[^\t]*\t", " ");
+
+            oldLine = System.Text.RegularExpressions.Regex.Replace(oldLine, "\t", " ");
+
+            AsText.AddTextToHistory(oldLine);
+
+            disassembler.Assemble(vAddress, assembly);
+            */
+        }
+
+        private void DisAssSetBP_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+            /*
+            BPAddress.Text = GlobalFunctions.toHex(disassembler.disAddress);
+            BPType.SelectedIndex = 3;
+            MainControl.SelectedTab = BreakpointPage;
+            */
+        }
+
+        private void disAssContextMenu_Opening(object sender, CancelEventArgs e)
+        {
+            throw new NotImplementedException();
+            /*
+            if (!ValidMemory.validAddress(disassembler.disAddress))
+            {
+                e.Cancel = true;
+            }
+            */
+        }
+
+        private void DisAssPoke_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+            /*
+            PAddress.Text = GlobalFunctions.toHex(disassembler.disAddress);
+            try
+            {
+                PValue.Text = GlobalFunctions.toHex(gecko.peek(disassembler.disAddress));
+            }
+            catch (EUSBGeckoException exc)
+            {
+                exceptionHandling.HandleException(exc);
+            }
+            MainControl.SelectedTab = searchPage;
+            */
+        }
+
+        private void disAssGCTCode_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+            /*
+            try
+            {
+                UInt32 address = disassembler.disAddress;
+                UInt32 value = gecko.peek(address);
+                CodeContent nCode = new CodeContent();
+                UInt32 memReg = address & 0xFE000000;
+                bool addDelimiters = false;
+                if (memReg != 0x80000000)
+                    addDelimiters = true;
+                if (addDelimiters)
+                    nCode.addLine(0x42000000, memReg);
+                address = address - memReg + 0x04000000;
+                nCode.addLine(address, value);
+                if (addDelimiters)
+                    nCode.addLine(0xE0000000, 0x80008000);
+                int nCodeId = GCTCodeContents.Count;
+                String name;
+                if (!InputBox.Show("Code name", "Insert code name", "New code", out name))
+                {
+                    name = "New code " + (nCodeId + 1).ToString();
+                }
+                //nCode.name = "New code " + (nCodeId + 1).ToString();
+                GCTCodeContents.AddCode(nCode, name);
+
+                GCTCodeList.Items[nCodeId].Selected = true;
+                MainControl.SelectedTab = GCTPage;
+            }
+            catch (EUSBGeckoException exc)
+            {
+                exceptionHandling.HandleException(exc);
+            }
+            */
+        }
+
+        private void memRange_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            int id = memRange.SelectedIndex;
+            memStart.Text =
+                Convert.ToString(ValidMemory.ValidAreas[id].low, 16).ToUpper();
+            memEnd.Text =
+                Convert.ToString(ValidMemory.ValidAreas[id].high, 16).ToUpper();
+        }
+
+        private void UpperEnable_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            //bool enable = UpperEnable.SelectedIndex == 1;
+            //upperValue.Enabled = enable;
+        }
+
+        private void comboBoxComparisonRHS_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+            /*
+            bool enable = comboBoxComparisonRHS.SelectedIndex == 0 || comboBoxComparisonRHS.SelectedIndex == 3;
+            textBoxComparisonValue.Enabled = enable;
+            //UpperEnable.Enabled = enable;
+            string comboBoxText = (string)comboBoxComparisonRHS.Items[1];
+            if (comboBoxText.Equals("Unknown Value") && comboBoxComparisonRHS.SelectedIndex == 1)
+            {
+                // disable comparison type combo box when Unknown searching
+                comboBoxComparisonType.Enabled = false;
+            }
+            else
+            {
+                // disable comparison type combo box when Unknown searching
+                comboBoxComparisonType.Enabled = true;
+            }
+
+            if (!enable)
+            {
+                //UpperEnable.SelectedIndex = 0;
+                if (comboBoxComparisonType.Items.Count <= 6)
+                {
+                    comboBoxComparisonType.Items.Add("Different by");
+                    comboBoxComparisonType.Items.Add("Different by less than");
+                    comboBoxComparisonType.Items.Add("Different by more than");
+                }
+
+
+                // Use the value field for different by searches
+                if (comboBoxComparisonType.SelectedIndex >= 6 && comboBoxComparisonType.Enabled)
+                {
+                    textBoxComparisonValue.Enabled = true;
+                }
+
+            }
+            if (enable)
+            {
+                if (comboBoxComparisonType.SelectedIndex >= 6)
+                    comboBoxComparisonType.SelectedIndex = 0;
+                while (comboBoxComparisonType.Items.Count > 6)
+                    comboBoxComparisonType.Items.RemoveAt(6);
+            }
+            searchComparisons[SearchGroupIndex].searchType = GetCmpRHS();
+            */
+        }
+
+        private void ValueLength_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+            /*
+            int length;
+            switch (comboBoxSearchDataType.SelectedIndex)
+            {
+                case 0: length = 2; break;
+                case 1: length = 4; break;
+                default: length = 8; break;
+            }
+            textBoxComparisonValue.MaxLength = length;
+            //upperValue.MaxLength = length;
+
+            textBoxComparisonValue.Text = fixString(textBoxComparisonValue.Text, length);
+            //upperValue.Text = fixString(upperValue.Text, length);
+            //diffOf.Text = fixString(diffOf.Text, length);
+            */
+        }
+
+        private void cmpType_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+            /*
+            bool enable = comboBoxComparisonType.SelectedIndex >= 6;
+            bool enable2 = comboBoxComparisonRHS.SelectedIndex == 0 || comboBoxComparisonRHS.SelectedIndex == 3;
+            textBoxComparisonValue.Enabled = enable || enable2;
+            if (enable)
+            {
+                //UpperEnable.SelectedIndex = 0;
+            }
+            searchComparisons[SearchGroupIndex].comparisonType = GetCmpType();
+            */
+        }
+
+        private void UpdateValueTypeDropDown()
+        {
+            if (numericUpDownNewSearchIndex.Value == 0)
+            {
+                // Don't compare against anything - unknown search
+                comboBoxComparisonRHS.Items[1] = (String)"Unknown value";
+            }
+            else
+            {
+                comboBoxComparisonRHS.Items[1] = (String)"New column (" + numericUpDownNewSearchIndex.Value + ")";
+            }
+
+            if (numericUpDownOldSearchIndex.Value == 0)
+            {
+                // Clear any other items from the list if there is no old dump loaded
+                while (comboBoxComparisonRHS.Items.Count > 2) comboBoxComparisonRHS.Items.RemoveAt(2);
+            }
+            else
+            {
+                String oldCol = "Old column (" + numericUpDownOldSearchIndex.Value + ")";
+
+                // Create or alter the item as needed
+                if (comboBoxComparisonRHS.Items.Count < 3)
+                {
+                    comboBoxComparisonRHS.Items.Add(oldCol);
+                }
+                else
+                {
+                    comboBoxComparisonRHS.Items[2] = oldCol;
+                }
+
+                // return results that are within some distance of an existing result
+                // TODO: implement this...
+                //if (numericUpDownNewSearchIndex.Value != 0)
+                //{
+                //    String diffCol = "Distance (" + numericUpDownNewSearchIndex.Value + ")";
+                //    // Create or alter the item as needed
+                //    if (comboBoxComparisonRHS.Items.Count < 4)
+                //    {
+                //        comboBoxComparisonRHS.Items.Add(diffCol);
+                //    }
+                //    else
+                //    {
+                //        comboBoxComparisonRHS.Items[3] = diffCol;
+                //    }
+                //}
+            }
+        }
+
+        private void SearchHistoryUpdownsInc()
+        {
+            throw new NotImplementedException();
+            /*
+            numericUpDownOldSearchIndex.ValueChanged -= numericUpDownOldSearchIndex_ValueChanged;
+            numericUpDownNewSearchIndex.ValueChanged -= numericUpDownNewSearchIndex_ValueChanged;
+
+            numericUpDownOldSearchIndex.Value = numericUpDownNewSearchIndex.Value;
+            numericUpDownNewSearchIndex.Value = Convert.ToDecimal(search.DumpNum);
+
+            numericUpDownOldSearchIndex.ValueChanged += numericUpDownOldSearchIndex_ValueChanged;
+            numericUpDownNewSearchIndex.ValueChanged += numericUpDownNewSearchIndex_ValueChanged;
+
+            UpdateValueTypeDropDown();
+            */
+        }
+
+        private void SearchHistoryUpdownsReset()
+        {
+            numericUpDownOldSearchIndex.Value = 0;
+            numericUpDownNewSearchIndex.Value = 0;
+            UpdateValueTypeDropDown();
+        }
+
+        private void PkAddress_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+            /*
+            if (SearchResults.SelectedRows.Count == 0)
+                return;
+            if (SearchResults.SelectedRows.Count == 1)
+            {
+                StringResult item = search.GetResult(
+                    SearchResults.SelectedRows[0].Index);
+                PAddress.Text = item.SAddress;
+                if (item.SOldValue != String.Empty)
+                {
+                    PValue.Text = item.SOldValue;
+                }
+                else
+                {
+                    PValue.Text = item.SValue;
+                }
+            }
+            else
+            {
+                multiPokeAddr.Clear();
+                PAddress.ClearHistory();
+                UInt32 address;
+                StringResult item = search.GetResult(
+                    SearchResults.SelectedRows[0].Index);
+                for (int i = 0; i < SearchResults.SelectedRows.Count; i++)
+                {
+                    address = search.GetAddress(
+                        SearchResults.SelectedRows[i].Index);
+                    multiPokeAddr.Add(address);
+                    PAddress.AddAddressToHistory(address);
+                }
+                PAddress.Text = "MP";
+                PValue.Text = item.SValue;
+            }
+            */
+        }
+
+        private void makeCode_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+            /*
+            if (SearchResults.SelectedRows.Count == 0)
+                return;
+            List<UInt32> addresses = new List<UInt32>();
+            UInt32 address;
+            int i;
+            for (i = 0; i < SearchResults.SelectedRows.Count; i++)
+            {
+                address = search.GetAddress(SearchResults.SelectedRows[i].Index);
+                addresses.Add(address);
+            }
+
+            addresses.Sort();
+
+            CodeContent nCode = new CodeContent();
+            UInt32 cAddressR = 0x80000000;
+            UInt32 rAddressR;
+            UInt32 offset;
+            bool firstLine = false;
+            UInt32 add;
+            switch (search.searchSize)
+            {
+                case SearchSize.Bit8:
+                    add = 0;
+                    break;
+                case SearchSize.Bit16:
+                    add = 0x02000000;
+                    break;
+                default:
+                    add = 0x04000000;
+                    break;
+            }
+
+            int nCodeId = GCTCodeContents.Count;
+            //nCode.name = "New code " + (nCodeId + 1).ToString();
+            String name;
+            if (!InputBox.Show("Code name", "Insert code name", "New code", out name))
+            {
+                name = "New code " + (nCodeId + 1).ToString();
+            }
+            for (i = 0; i < addresses.Count; i++)
+            {
+                rAddressR = addresses[i] & 0xFE000000;
+                if (firstLine && cAddressR != rAddressR && cAddressR != 0x80000000)
+                    nCode.addLine(0xE0000000, 0x80008000);
+                if (cAddressR != rAddressR)
+                    if (rAddressR != 0x80000000)
+                        nCode.addLine(0x42000000, rAddressR);
+                cAddressR = rAddressR;
+
+                offset = addresses[i] + add - rAddressR;
+                nCode.addLine(offset, search.GetNewValueFromAddress(addresses[i]));
+
+                firstLine = true;
+            }
+            if (cAddressR != 0x80000000)
+                nCode.addLine(0xE0000000, 0x80008000);
+            GCTCodeContents.AddCode(nCode, name);
+
+            GCTCodeList.Items[nCodeId].Selected = true;
+            MainControl.SelectedTab = GCTPage;
+            */
+        }
+
+        private void PButton_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+            /*
+            Byte tag = Byte.Parse(((Button)sender).Tag.ToString());
+
+            TextBox aBox, vBox;
+            bool allowMulti;
+            switch (tag)
+            {
+                case 1:
+                    // Don't multi-poke if we're in Memory Viewer
+                    aBox = memViewPAddress;
+                    vBox = memViewPValue;
+                    allowMulti = false;
+                    break;
+                default:
+                    aBox = PAddress;
+                    vBox = PValue;
+                    allowMulti = true;
+                    break;
+            }
+
+            UInt32 addr = 0;
+            UInt32 value;
+            UInt16 Val16;
+            Byte Val8;
+            UInt32 Val32;
+            String AText = aBox.Text;
+            String VText = vBox.Text;
+            //int valLength = VText.Length;
+
+
+            bool multipoke = false;
+
+            if (AText != "MP")
+            {
+                // Check the address text for a valid hex number, if it's not a multi-poke
+                if (!GlobalFunctions.tryToHex(AText, out addr))
+                {
+                    MessageBox.Show("Invalid address");
+                    return;
+                }
+                multipoke = false;
+            }
+            else if (allowMulti)
+            {
+                // If we can multi-poke, make sure we have some to poke
+                if (PAddress.GetHistoryCount() == 0)
+                {
+                    MessageBox.Show("No multipoke data availible!");
+                    return;
+                }
+                multipoke = true;
+            }
+            else
+            {
+                MessageBox.Show("Multipoke not usable in this poke box!");
+                return;
+            }
+
+            // Check to make sure the hex number is actually a valid address too
+            // TODO: We should to something to protect multi-poke, too.  Iterate through the array with validAddress?
+            if (!multipoke && !ValidMemory.validAddress(addr))
+            {
+                MessageBox.Show("Address is not within valid memory!");
+                return;
+            }
+
+            // Okay, so far so good, the address is valid, how about the value?
+            if (!GlobalFunctions.tryToHex(VText, out value))
+            {
+                MessageBox.Show("Invalid address");
+                return;
+            }
+
+            //try
+            //{
+            //    value = Convert.ToUInt32(vBox.Text, 16);
+            //}
+            //catch
+            //{
+            //    MessageBox.Show("Invalid value");
+            //    return;
+            //}
+
+            uint currentValue;
+            // Currently, we only allow poke operations for
+            // 32-bit single pokes in the Memory Viewer window
+            // Perhaps we should include other poke types?
+            if (!multipoke && VText.Length > 4 && tag == 1)
+            {
+                currentValue = gecko.peek(addr);
+
+                // Modify the current value according to the Poke Operation type
+                switch (comboBoxPokeOperation.SelectedIndex)
+                {
+                    case 7:     // DIV
+                        value = currentValue / value;
+                        break;
+                    case 6:     // MUL
+                        value = currentValue * value;
+                        break;
+                    case 5:     // SUB
+                        value = currentValue - value;
+                        break;
+                    case 4:     // ADD
+                        value = currentValue + value;
+                        break;
+                    case 3:     // XOR
+                        value = currentValue ^ value;
+                        break;
+                    case 2:     // AND
+                        value = currentValue & value;
+                        break;
+                    case 1:     // OR
+                        value = currentValue | value;
+                        break;
+                    case 0:     // Write
+                    default:     // Write
+                        value = value;
+                        break;
+                }
+            }
+
+            try
+            {
+                int MultiPokeCount = PAddress.GetHistoryCount();
+                if (VText.Length > 4)
+                {
+                    Val32 = value;
+                    if (!multipoke)
+                    {
+                        // Fix the user's text box if they messed up alignment?
+                        addr = addr & 0xFFFFFFFC;
+                        aBox.Text = Convert.ToString(addr, 16);
+                    }
+                    if (!multipoke)
+                        gecko.poke32(addr, Val32);
+                    else
+                        for (int i = 0; i < MultiPokeCount; i++)
+                            gecko.poke32(PAddress.GetHistoryuint(i), Val32);
+                    //gecko.poke32(multiPokeAddr[i], Val32);
+                }
+                else if (VText.Length > 2)
+                {
+                    Val16 = (UInt16)value;
+                    if (!multipoke)
+                    {
+                        // Fix the user's text box if they messed up alignment?
+                        addr = addr & 0xFFFFFFFE;
+                        aBox.Text = Convert.ToString(addr, 16);
+                    }
+                    if (!multipoke)
+                        gecko.poke16(addr, Val16);
+                    else
+                        for (int i = 0; i < MultiPokeCount; i++)
+                            gecko.poke16(PAddress.GetHistoryuint(i), Val16);
+                    //gecko.poke16(multiPokeAddr[i], Val16);
+                }
+                else
+                {
+                    Val8 = (Byte)value;
+                    if (!multipoke)
+                        gecko.poke08(addr, Val8);
+                    else
+                        for (int i = 0; i < MultiPokeCount; i++)
+                            gecko.poke08(PAddress.GetHistoryuint(i), Val8);
+                    //gecko.poke08(multiPokeAddr[i], Val8);
+                }
+
+                if (tag == 1)
+                {
+                    System.Threading.Thread.Sleep(100);
+                    //viewer.address = addr;
+                    // Do a fast update because
+                    // 1) We know they clicked on the poke button, so the selected cell isn't changing
+                    // 2) We don't need to update the Poke value because
+                    //   2a) on a write, it's already the value it's going to be, or
+                    //   2b) on some non-write operations (like XOR), we probably want to keep the poke value
+                    //       although perhaps some operations should load the new value...
+                    viewer.Update(true);
+                }
+            }
+            catch (EUSBGeckoException exc)
+            {
+                exceptionHandling.HandleException(exc);
+            }
+            */
+        }
+
+        private void ResSrch_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Are you sure you want to start a new search?",
+                "Attention", MessageBoxButtons.YesNo, MessageBoxIcon.Warning)
+                != DialogResult.Yes)
+                return;
+            ResetSearch();
+        }
+
+        private void PAddress_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((Byte)e.KeyChar == 13)
+            {
+                PValue.Focus();
+                e.Handled = true;
+            }
+        }
+
+        private void PValue_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if ((Byte)e.KeyChar == 13)
+            {
+                PkAddress_Click(sender, e);
+                e.Handled = true;
+            }
+        }
+
+
+        private void BpSAddress_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+            /*
+            if (SearchResults.SelectedRows.Count != 1)
+                return;
+
+            StringResult foundCode = search.GetResult(SearchResults.SelectedRows[0].Index);
+            BPAddress.Text = foundCode.SAddress;
+
+            // If BPType is Execute, change to Read/Write
+            if (BPType.SelectedIndex == 3)
+            {
+                BPType.SelectedIndex = 2;
+            }
+
+            MainControl.SelectedTab = BreakpointPage;
+            */
+        }
+
+
+        private void ShowInDiss_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+            /*
+            if (SearchResults.SelectedRows.Count != 1)
+                return;
+
+            UInt32 address = search.GetAddress(SearchResults.SelectedRows[0].Index);
+            disassembler.DissToBox(address);
+            MainControl.SelectedTab = DisPage;
+            */
+        }
+
+        private void ShowInMemView_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+            /*
+            if (SearchResults.SelectedRows.Count != 1)
+                return;
+            UInt32 mAddress = search.GetAddress(SearchResults.SelectedRows[0].Index);
+            CenteredMemViewSelection(sender, e, mAddress);
+            */
+        }
+
+        private void CenteredMemView(object sender, EventArgs e, UInt32 mAddress)
+        {
+            int oldSelectedRow = memViewGrid.CurrentCell.RowIndex;
+            int oldSelectedCol = memViewGrid.CurrentCell.ColumnIndex;
+
+            CenteredMemViewSelection(sender, e, mAddress);
+
+            memViewGrid.CurrentCell = memViewGrid[oldSelectedCol, oldSelectedRow];
+        }
+
+        private void CenteredMemViewSelection(object sender, EventArgs e, UInt32 mAddress)
+        {
+            throw new NotImplementedException();
+            /*
+            // Let users blindly throw addresses in here and we can check the validity
+            if (!ValidMemory.validAddress(mAddress)) return;
+
+            UInt32 tAddress = (mAddress & 0xFFFFFFF0) - 0x70;
+            tAddress = Math.Max(tAddress, ValidMemory.ValidAreas[ValidMemory.rangeCheckId(mAddress)].low);
+            tAddress = Math.Min(tAddress, ValidMemory.ValidAreas[ValidMemory.rangeCheckId(mAddress)].high - 0x100);
+            //tAddress = Math.Max(tAddress, ValidMemory.ValidAreas[MemViewARange.SelectedIndex].low);
+            //tAddress = Math.Min(tAddress, ValidMemory.ValidAreas[MemViewARange.SelectedIndex].high - 0x100);
+            UInt32 offset = mAddress - tAddress;
+
+            // Turn off the SelectedIndexChanged event to prevent it from changing the MemViewAValue
+            MemViewARange.SelectedIndexChanged -= MemViewARange_SelectedIndexChanged;
+            MemViewARange.SelectedIndex = ValidMemory.rangeCheckId(mAddress);
+            MemViewARange.SelectedIndexChanged += MemViewARange_SelectedIndexChanged;
+
+            memViewAValue.Text = GlobalFunctions.toHex(mAddress);
+
+            MainControl.SelectedTab = MemView;
+            if (memViewGrid.Rows.Count == 0)
+            {
+                viewer.Update();    // trick the memviewgrid into being populated
+            }
+
+            memViewGrid.Rows[(int)offset / 0x10].Cells[((int)mAddress & 0xF) / 4 + 1].Selected = true;
+
+            tAddress &= 0xFFFFFFFC;
+            viewer.address = tAddress;
+            viewer.Update();
+            */
+        }
+
+        private void showInWatchList_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+            /*
+            List<UInt32> addresses = new List<UInt32>();
+            UInt32 address;
+            int i;
+            for (i = 0; i < SearchResults.SelectedRows.Count; i++)
+            {
+                address = search.GetAddress(SearchResults.SelectedRows[i].Index);
+                addresses.Add(address);
+            }
+
+            addresses.Sort();
+
+            int valLength = PValue.MaxLength;
+            WatchDataSize ws;
+            switch (valLength)
+            {
+                case 1: ws = WatchDataSize.Bit8; break;
+                case 2: ws = WatchDataSize.Bit16; break;
+                default: ws = WatchDataSize.Bit32; break;
+            }
+
+            foreach (UInt32 watchadd in addresses)
+            {
+                watcher.AddWatch(GlobalFunctions.toHex(watchadd), new UInt32[] { watchadd }, ws);
+            }
+
+            MainControl.SelectedTab = WatchTab;
+            */
+        }
     }
 }
