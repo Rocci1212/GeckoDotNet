@@ -46,7 +46,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AddressRange.cs" />
     <Compile Include="BPList.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -59,7 +58,7 @@
     <Compile Include="HistoryTextBox.Designer.cs">
       <DependentUpon>HistoryTextBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="ValidMemory.cs" />
+    <Compile Include="MemoryAreas.cs" />
     <None Include="external\Config.cs" />
     <None Include="external\Events.cs" />
     <None Include="external\IProfile.cs" />
