@@ -52,6 +52,7 @@
     <Compile Include="BPList.Designer.cs">
       <DependentUpon>BPList.cs</DependentUpon>
     </Compile>
+    <Compile Include="D2XXWrapper.cs" />
     <Compile Include="HistoryTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -71,9 +72,8 @@
     <Compile Include="AddressTextBox.Designer.cs">
       <DependentUpon>AddressTextBox.cs</DependentUpon>
     </Compile>
-    <Compile Include="ByteSwap.cs" />
+    <Compile Include="USBGecko.cs" />
     <Compile Include="GlobalFunctions.cs" />
-    <None Include="Logger.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

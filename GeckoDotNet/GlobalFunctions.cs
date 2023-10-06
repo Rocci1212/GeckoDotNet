@@ -3,6 +3,84 @@ using System.IO;
 
 namespace GeckoDotNet
 {
+    static class Logger
+    {
+        private static TextWriter debugLogWriter = null;
+        //private static string path = System.Windows.Forms.Application.StartupPath + "\\Logs\\GDNdebug" + DateTime.Now + ".log";
+        private static string folder = System.Windows.Forms.Application.StartupPath + Path.DirectorySeparatorChar + "Logs" + Path.DirectorySeparatorChar;
+        private static string filename = "GDNdebug " + DateTime.Now.ToString("yy-mm-dd H.mm.ss") + ".log";
+
+        static void CreateOrAppendLoggingFile(string Folder, string Filename)
+        {
+            if (debugLogWriter != null)
+            {
+                debugLogWriter.Close();
+                debugLogWriter.Dispose();
+            }
+
+            try
+            {
+                if (!Directory.Exists(Folder))
+                    Directory.CreateDirectory(Folder);
+
+                debugLogWriter = new StreamWriter(Folder + Filename, true);
+            }
+            catch (System.IO.IOException)
+            {
+                filename = "GDNdebug " + DateTime.Now.ToString("yy-mm-dd H.mm.ss") + ".log";
+                CreateOrAppendLoggingFile(folder, filename);
+            }
+        }
+
+        public static void WriteLine(string write)
+        {
+            if (debugLogWriter == null)
+            {
+                CreateOrAppendLoggingFile(folder, filename);
+                debugLogWriter.WriteLine();
+                debugLogWriter.WriteLine();
+                debugLogWriter.WriteLine(DateTime.Now.ToString("G") + ": Opened log");
+            }
+
+            debugLogWriter.WriteLine(write);
+            debugLogWriter.Flush();
+        }
+
+        public static void WriteLineTimed(string write)
+        {
+            string newWrite = DateTime.Now.ToString("T") + ": " + write;
+            WriteLine(newWrite);
+        }
+
+        public static DateTime WriteLineTimedStarted(string write)
+        {
+#if _LOG_TIMING
+            string newWrite = "Started " + write;
+            WriteLineTimed(newWrite);
+#endif
+            return DateTime.Now;
+        }
+
+        public static void WriteLineTimedFinished(string write, DateTime start)
+        {
+#if _LOG_TIMING
+            string newWrite = "Finished " + write + " in " + new TimeSpan(DateTime.Now.Ticks - start.Ticks).TotalSeconds + " seconds";
+            WriteLineTimed(newWrite);
+#endif
+        }
+
+        public static void WriteException(Exception ex)
+        {
+            Logger.WriteLineTimed("Exception occured!");
+            Logger.WriteLine("Message: " + ex.Message);
+            Logger.WriteLine("Stack Trace: \r\n" + ex.StackTrace);
+            Logger.WriteLine("Inner Exception: " + ex.InnerException);
+        }
+
+    }
+
+
+    
     public static class GlobalFunctions
     {
         public static String fixString(String input, int length)
@@ -100,8 +178,8 @@ namespace GeckoDotNet
             switch (blength)
             {
                 case 1: result = (UInt32)buffer[0]; break;
-                case 2: result = (UInt32)ByteSwap.Swap((UInt16)BitConverter.ToUInt16(buffer, 0)); break;
-                default: result = (UInt32)ByteSwap.Swap(BitConverter.ToUInt32(buffer, 0)); break;
+                case 2: result = (UInt32)USBGecko.Swap((UInt16)BitConverter.ToUInt16(buffer, 0)); break;
+                default: result = (UInt32)USBGecko.Swap(BitConverter.ToUInt32(buffer, 0)); break;
             }
 
             return result;
