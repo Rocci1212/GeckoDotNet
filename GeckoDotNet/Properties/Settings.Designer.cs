@@ -74,9 +74,9 @@ namespace GeckoDotNet.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public short BPType {
+        public int BPType {
             get {
-                return ((short)(this["BPType"]));
+                return ((int)(this["BPType"]));
             }
             set {
                 this["BPType"] = value;
@@ -134,9 +134,9 @@ namespace GeckoDotNet.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("0")]
-        public short MemViewFontSize {
+        public float MemViewFontSize {
             get {
-                return ((short)(this["MemViewFontSize"]));
+                return ((float)(this["MemViewFontSize"]));
             }
             set {
                 this["MemViewFontSize"] = value;
@@ -152,6 +152,42 @@ namespace GeckoDotNet.Properties {
             }
             set {
                 this["ScreenshotJpegQuality"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int LastWidth {
+            get {
+                return ((int)(this["LastWidth"]));
+            }
+            set {
+                this["LastWidth"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int LastHeight {
+            get {
+                return ((int)(this["LastHeight"]));
+            }
+            set {
+                this["LastHeight"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string DisAsmAddr {
+            get {
+                return ((string)(this["DisAsmAddr"]));
+            }
+            set {
+                this["DisAsmAddr"] = value;
             }
         }
     }

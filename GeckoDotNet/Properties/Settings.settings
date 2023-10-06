@@ -14,7 +14,7 @@
     <Setting Name="MemViewAddr" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
     </Setting>
-    <Setting Name="BPType" Type="System.Int16" Scope="User">
+    <Setting Name="BPType" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="BPNext" Type="System.Boolean" Scope="User">
@@ -29,11 +29,20 @@
     <Setting Name="ViewFloatsInHex" Type="System.Boolean" Scope="User">
       <Value Profile="(Default)">False</Value>
     </Setting>
-    <Setting Name="MemViewFontSize" Type="System.Int16" Scope="User">
+    <Setting Name="MemViewFontSize" Type="System.Single" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
     <Setting Name="ScreenshotJpegQuality" Type="System.Int16" Scope="User">
       <Value Profile="(Default)">85</Value>
+    </Setting>
+    <Setting Name="LastWidth" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="LastHeight" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="DisAsmAddr" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
     </Setting>
   </Settings>
 </SettingsFile>

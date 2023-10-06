@@ -200,9 +200,7 @@ namespace GeckoDotNet
             BPType.SelectedIndex = Properties.Settings.Default.BPType;
             checkBoxBPNext.Checked = Properties.Settings.Default.BPNext;
             checkBoxPauseCodes.Checked = Properties.Settings.Default.PauseCodes;
-            /*
-            Size = GeckoApp.Properties.Settings.Default.LastSize;
-            */
+            Size = new Size(Properties.Settings.Default.LastWidth, Properties.Settings.Default.LastHeight);
             int oldSplitter = Properties.Settings.Default.LastSplitterSize;
             // The splitter gets moved when the breakpoint page is entered
             // so artificially force it to move
@@ -212,21 +210,18 @@ namespace GeckoDotNet
             toolStripTextBoxMemViewFontSize.Text = Properties.Settings.Default.MemViewFontSize.ToString();
             toolStripTextBoxMemViewFontSize_KeyDown(null, new KeyEventArgs(Keys.Enter));
             viewFloatsInHexToolStripMenuItem.Checked = Properties.Settings.Default.ViewFloatsInHex;
-            //addressTextBox1.CopyStringToHistory(GeckoApp.Properties.Settings.Default.addressHistory);
+            //addressTextBox1.CopyStringToHistory(Properties.Settings.Default.addressHistory);
             //addressTextBox1.AutoHistory = true;
         }
 
         private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            throw new NotImplementedException();
-            /*
             VerifyCodesAreSaved();
             watcher.StopThread();
 
             Connecting = false;
-            //GeckoApp.Properties.Settings.Default.addressHistory = addressTextBox1.GetStringFromHistory();
-            GeckoApp.Properties.Settings.Default.Save();
-            */
+            //Properties.Settings.Default.addressHistory = addressTextBox1.GetStringFromHistory();
+            Properties.Settings.Default.Save();
         }
         #endregion
 
@@ -245,8 +240,6 @@ namespace GeckoDotNet
 
         public void FormStop(bool enable)
         {
-            throw new NotImplementedException();
-            /*
             MainControl.Enabled = true;
 
             EnableMainControls(enable);
@@ -259,13 +252,10 @@ namespace GeckoDotNet
             OpenNotePad.Enabled = enable;
             if (!enable && notes != null && notes.Visible)
                 notes.Close();
-            */
         }
 
         public void CryError()
         {
-            throw new NotImplementedException();
-            /*
             FormStop(false);
             gecko.Disconnect();
             StatusCap.Text = "An error occured. Please reconnect!";
@@ -273,13 +263,10 @@ namespace GeckoDotNet
             PCent.Text = "0%";
             CUSBGecko.Enabled = true;
             ResetSearch();
-            */
         }
 
         private void transfer(UInt32 currentchunk, UInt32 allchunks, UInt32 transferred, UInt32 length, bool okay, bool dump)
         {
-            throw new NotImplementedException();
-            /*
             if (length <= 1024)
                 return;
             int percent;
@@ -311,20 +298,16 @@ namespace GeckoDotNet
             PCent.Text = percent.ToString() + "%";
             progressBar.Value = percent;
             Application.DoEvents();
-            */
         }
 
         public void ResetSearch()
         {
-            throw new NotImplementedException();
-            /*
             Search.Text = "Search";
             comboBoxComparisonRHS.Items[1] = (String)"Unknown value";
             ResSrch.Enabled = false;
             search.Reset();
             buttonUndoSearch.Enabled = search.CanUndo();
             SearchHistoryUpdownsReset();
-            */
         }
 
         private String fixString(String input, int length)
@@ -349,8 +332,6 @@ namespace GeckoDotNet
         #region Always visible buttons
         public void DisconnectButton_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-            /*
             FormStop(false);
             try { gecko.Disconnect(); }
             catch { }
@@ -358,13 +339,10 @@ namespace GeckoDotNet
             progressBar.Value = 0;
             PCent.Text = "0%";
             CUSBGecko.Enabled = true;
-            */
         }
 
         private bool UnknownStatus()
         {
-            throw new NotImplementedException();
-            /*
             try
             {
                 WiiStatus stat = gecko.status();
@@ -374,13 +352,10 @@ namespace GeckoDotNet
             {
                 return true;
             }
-            */
         }
 
         public void CUSBGecko_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-            /*
             if (Connecting)
             {
                 Connecting = false;
@@ -530,13 +505,10 @@ namespace GeckoDotNet
             {
                 exceptionHandling.HandleException(exc);
             }
-            */
         }
 
         private void PGame_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-            /*
             try
             {
                 WiiStatus status = gecko.status();
@@ -622,13 +594,10 @@ namespace GeckoDotNet
             {
                 exceptionHandling.HandleException(exc);
             }
-            */
         }
 
         private void RGame_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-            /*
             PGame.Text = "Pause game";
             RGame.Text = "Run game";
 
@@ -645,15 +614,11 @@ namespace GeckoDotNet
             {
                 exceptionHandling.HandleException(exc);
             }
-            */
         }
 
         private void OpenNotePad_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-            /*
             notes.Show(gamename);
-            */
         }
         #endregion
 
@@ -675,8 +640,6 @@ namespace GeckoDotNet
 
         private void comboBoxComparisonRHS_SelectedIndexChanged(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-            /*
             bool enable = comboBoxComparisonRHS.SelectedIndex == 0 || comboBoxComparisonRHS.SelectedIndex == 3;
             textBoxComparisonValue.Enabled = enable;
             //UpperEnable.Enabled = enable;
@@ -718,7 +681,6 @@ namespace GeckoDotNet
                     comboBoxComparisonType.Items.RemoveAt(6);
             }
             searchComparisons[SearchGroupIndex].searchType = GetCmpRHS();
-            */
         }
 
         private void ValueLength_SelectedIndexChanged(object sender, EventArgs e)
@@ -740,8 +702,6 @@ namespace GeckoDotNet
 
         private void cmpType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-            /*
             bool enable = comboBoxComparisonType.SelectedIndex >= 6;
             bool enable2 = comboBoxComparisonRHS.SelectedIndex == 0 || comboBoxComparisonRHS.SelectedIndex == 3;
             textBoxComparisonValue.Enabled = enable || enable2;
@@ -750,13 +710,10 @@ namespace GeckoDotNet
                 //UpperEnable.SelectedIndex = 0;
             }
             searchComparisons[SearchGroupIndex].comparisonType = GetCmpType();
-            */
         }
 
         private void Search_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-            /*
             SearchSize size;
             SearchType type;
             ComparisonType cType;
@@ -899,9 +856,7 @@ namespace GeckoDotNet
                 Logger.WriteException(ex);
                 CryError();
             }
-            */
         }
-        /*
         private SearchType GetCmpRHS()
         {
             SearchType sType;
@@ -961,7 +916,7 @@ namespace GeckoDotNet
                 default: comboBoxComparisonType.SelectedIndex = 0; break;
             }
         }
-        */
+
         private void UpdateValueTypeDropDown()
         {
             if (numericUpDownNewSearchIndex.Value == 0)
@@ -1013,8 +968,6 @@ namespace GeckoDotNet
 
         private void SearchHistoryUpdownsInc()
         {
-            throw new NotImplementedException();
-            /*
             numericUpDownOldSearchIndex.ValueChanged -= numericUpDownOldSearchIndex_ValueChanged;
             numericUpDownNewSearchIndex.ValueChanged -= numericUpDownNewSearchIndex_ValueChanged;
 
@@ -1025,7 +978,6 @@ namespace GeckoDotNet
             numericUpDownNewSearchIndex.ValueChanged += numericUpDownNewSearchIndex_ValueChanged;
 
             UpdateValueTypeDropDown();
-            */
         }
 
         private void SearchHistoryUpdownsReset()
@@ -1037,8 +989,6 @@ namespace GeckoDotNet
 
         private void PkAddress_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-            /*
             if (SearchResults.SelectedRows.Count == 0)
                 return;
             if (SearchResults.SelectedRows.Count == 1)
@@ -1072,13 +1022,10 @@ namespace GeckoDotNet
                 PAddress.Text = "MP";
                 PValue.Text = item.SValue;
             }
-            */
         }
 
         private void makeCode_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-            /*
             if (SearchResults.SelectedRows.Count == 0)
                 return;
             List<UInt32> addresses = new List<UInt32>();
@@ -1139,13 +1086,10 @@ namespace GeckoDotNet
 
             GCTCodeList.Items[nCodeId].Selected = true;
             MainControl.SelectedTab = GCTPage;
-            */
         }
 
         private void PButton_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-            /*
             Byte tag = Byte.Parse(((Button)sender).Tag.ToString());
 
             TextBox aBox, vBox;
@@ -1330,7 +1274,6 @@ namespace GeckoDotNet
             {
                 exceptionHandling.HandleException(exc);
             }
-            */
         }
 
         private void ResSrch_Click(object sender, EventArgs e)
@@ -2684,8 +2627,6 @@ namespace GeckoDotNet
         #region Watch List
         private void WatchAdd_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-            /*
             watcher.SuspendThread();
             if (addWatchDialog == null)
                 addWatchDialog = new WatchDialog();
@@ -2695,13 +2636,10 @@ namespace GeckoDotNet
                             addWatchDialog.WDataSize);
             }
             watcher.ResumeThread();
-            */
         }
 
         private void WatchEditCM_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-            /*
             WatchEntry entry;
             watcher.GetSelected(out entry);
             if (entry != null)
@@ -2716,7 +2654,6 @@ namespace GeckoDotNet
                 }
                 watcher.ResumeThread();
             }
-            */
         }
 
         private void WatchCM_Opening(object sender, CancelEventArgs e)
@@ -2734,16 +2671,11 @@ namespace GeckoDotNet
 
         private void WatchDeleteCM_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-            /*
             watcher.DeleteSelected();
-            */
         }
 
         private void WatchPokeCM_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-            /*
             WatchEntry entry;
             if (watcher.GetSelected(out entry))
             {
@@ -2790,7 +2722,6 @@ namespace GeckoDotNet
             }
             else
                 MessageBox.Show("Address not availible!");
-            */
         }
 
         private void WatchList_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
@@ -2800,8 +2731,6 @@ namespace GeckoDotNet
 
         private void WatchListSaveButton_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-            /*
             if (!watcher.hasContent)
             {
                 MessageBox.Show("The watch list is empty!");
@@ -2813,13 +2742,10 @@ namespace GeckoDotNet
             {
                 watcher.SaveToFile(WatchListSave.FileName);
             }
-            */
         }
 
         private void WatchListClear_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-            /*
             if (watcher.hasContent)
             {
                 if (MessageBox.Show("Are you sure?", "Gecko dotNet", MessageBoxButtons.YesNo,
@@ -2828,13 +2754,10 @@ namespace GeckoDotNet
                     watcher.Clear();
                 }
             }
-            */
         }
 
         private void WatchListOpenButton_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-            /*
             bool merge = false;
             bool abort = false;
             if (watcher.hasContent)
@@ -2863,25 +2786,19 @@ namespace GeckoDotNet
             {
                 watcher.LoadFromFile(WatchListOpen.FileName, merge);
             }
-            */
         }
         #endregion
 
         #region FST tab
         private void FSTRead_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-            /*
             fst.DumpTree();
-            */
         }
         #endregion
 
         #region Tools Tab
         private void ToolsDisableProtection_CheckedChanged(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-            /*
             if (ToolsDisableProtection.Checked)
             {
                 ToolsDisableWatchProtection.Enabled = true;
@@ -2894,16 +2811,12 @@ namespace GeckoDotNet
                 ToolsDisableWatchProtection.Checked = false;
                 ToolsDisableWatchProtection.Enabled = false;
             }
-            */
         }
 
         private void ToolsDisableWatchProtection_CheckedChanged(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-            /*
             watcher.addressDebug =
                 (ToolsDisableWatchProtection.Checked);
-            */
         }
 
         private void ToolsDumpRegions_SelectedIndexChanged(object sender, EventArgs e)
@@ -2929,8 +2842,6 @@ namespace GeckoDotNet
 
         private void ToolsDump_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-            /*
             UInt32 lowAddress, highAddress;
 
             if (!GlobalFunctions.tryToHex(ToolsDumpStart.Text, out lowAddress))
@@ -2972,7 +2883,6 @@ namespace GeckoDotNet
             {
                 exceptionHandling.HandleException(exc);
             }
-            */
         }
         #endregion
 
@@ -3136,8 +3046,6 @@ namespace GeckoDotNet
 
         private void MainControl_Selecting(object sender, TabControlCancelEventArgs e)
         {
-            throw new NotImplementedException();
-            /*
             // If there's a breakpoint pending, keep the breakpoints tab up
             // Note that we're hooking the Selecting event, because this fires before the tab is actually switched
             // If you hook SelectedIndexChanged (the default) then you'll see the other tabs load...
@@ -3157,7 +3065,6 @@ namespace GeckoDotNet
             {
                 MainControl.SelectedTab = TabLock;
             }
-            */
         }
 
         private void memViewGrid_CellMouseDoubleClick(object sender, DataGridViewCellMouseEventArgs e)
@@ -3174,8 +3081,6 @@ namespace GeckoDotNet
 
         private void memViewGrid_KeyDown(object sender, KeyEventArgs e)
         {
-            throw new NotImplementedException();
-            /*
             UInt32 bAddress = ValidMemory.ValidAreas[MemViewARange.SelectedIndex].low + (uint)vScrollBarMemViewGrid.Value;
             uint smallChange = (uint)vScrollBarMemViewGrid.SmallChange;
             uint largeChange = (uint)vScrollBarMemViewGrid.LargeChange;
@@ -3272,7 +3177,6 @@ namespace GeckoDotNet
                     Clipboard.SetText(MemoryViewerContentsAsString());
                 }
             }
-            */
         }
 
         private String MemoryViewerContentsAsString()
@@ -3315,20 +3219,15 @@ namespace GeckoDotNet
 
         private void checkBoxAlwaysOnTop_CheckedChanged(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-            /*
             TopMost = checkBoxAlwaysOnTop.Checked;
             codeWizard.TopMost = checkBoxAlwaysOnTop.Checked;
-            GeckoApp.Properties.Settings.Default.AlwaysOnTop = TopMost;
-            GeckoApp.Properties.Settings.Default.Save();        // don't forget to save!
-            */
+            Properties.Settings.Default.AlwaysOnTop = TopMost;
+            Properties.Settings.Default.Save();        // don't forget to save!
         }
 
         private bool wasRunning;
         private void checkBoxFPS_CheckedChanged(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-            /*
             if (checkBoxFPS.Checked)
             {
                 // Remember whether we were paused
@@ -3343,7 +3242,6 @@ namespace GeckoDotNet
                 // Hit the run button whenever the checkbox is unchecked
                 RGame_Click(sender, e);
             }
-            */
         }
 
         private void timerFPS_Tick(object sender, EventArgs e)
@@ -3353,38 +3251,27 @@ namespace GeckoDotNet
 
         private void numericUpDownFPS_ValueChanged(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-            /*
             timerFPS.Interval = (int)(1000 / Convert.ToDouble(numericUpDownFPS.Value));
-            GeckoApp.Properties.Settings.Default.FPS = numericUpDownFPS.Value;
-            GeckoApp.Properties.Settings.Default.Save();
-            */
+            Properties.Settings.Default.FPS = numericUpDownFPS.Value;
+            Properties.Settings.Default.Save();
         }
 
         private void DisRegion_TextChanged(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-            /*
-            GeckoApp.Properties.Settings.Default.DisAsmAddr = DisRegion.Text;
-            GeckoApp.Properties.Settings.Default.Save();
-            */
+            Properties.Settings.Default.DisAsmAddr = DisRegion.Text;
+            Properties.Settings.Default.Save();
         }
 
         private void BPAddress_TextChanged(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-            /*
-            GeckoApp.Properties.Settings.Default.BPAddr = BPAddress.Text;
-            GeckoApp.Properties.Settings.Default.Save();
-            */
+            Properties.Settings.Default.BPAddr = BPAddress.Text;
+            Properties.Settings.Default.Save();
         }
 
         private void memViewAValue_TextChanged(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-            /*
-            GeckoApp.Properties.Settings.Default.MemViewAddr = memViewAValue.Text;
-            GeckoApp.Properties.Settings.Default.Save();
+            Properties.Settings.Default.MemViewAddr = memViewAValue.Text;
+            Properties.Settings.Default.Save();
 
             // Update scrollbar
             uint address;
@@ -3400,16 +3287,12 @@ namespace GeckoDotNet
 
                 vScrollBarMemViewGrid.Value = (int)offset;
             }
-            */
         }
 
         private void BPType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-            /*
-            GeckoApp.Properties.Settings.Default.BPType = BPType.SelectedIndex;
-            GeckoApp.Properties.Settings.Default.Save();
-            */
+            Properties.Settings.Default.BPType = BPType.SelectedIndex;
+            Properties.Settings.Default.Save();
         }
 
         // Unfortunately, we can't intercept the Sorting event and cancel it
@@ -3419,17 +3302,12 @@ namespace GeckoDotNet
         // It will take care of updating the current page
         private void SearchResults_Sorted(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-            /*
             search.SortResults();
-            */
         }
 
         // If we wait until "UserDeletedRow", we won't know what row was deleted
         private void SearchResults_UserDeletingRow(object sender, DataGridViewRowCancelEventArgs e)
         {
-            throw new NotImplementedException();
-            /*
             // Cancel the deletion because we'll handle it ourselves
             // Otherwise both the gridview and the list will delete an item
             e.Cancel = true;
@@ -3441,7 +3319,6 @@ namespace GeckoDotNet
                 search.DeleteResults(SearchResults.SelectedRows);
             }
             //search.DeleteResult(e.Row.Index);
-            */
         }
 
         // But after a row is deleted, the DataGridView resets the selected row's index to 0
@@ -3454,8 +3331,6 @@ namespace GeckoDotNet
 
         private void buttonLoadSearch_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-            /*
             // Load whole history folder and adjust the dump numbers
 
             DialogResult LoadFileResult = openFileDialogSearch.ShowDialog();
@@ -3484,13 +3359,10 @@ namespace GeckoDotNet
                     UpdateValueTypeDropDown();
                 }
             }
-            */
         }
 
         private void buttonSaveSearch_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-            /*
             // Save whole history folder
 
 
@@ -3499,20 +3371,16 @@ namespace GeckoDotNet
             {
                 search.SaveSearchHistory(saveFileDialogSearch.FileName);
             }
-            */
         }
 
         private void buttonCancelSearch_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-            /*
             DialogResult confirmationPrompt = MessageBox.Show("Are you sure you want to cancel?", "Confirm Cancel", MessageBoxButtons.OKCancel);
             if (confirmationPrompt == DialogResult.OK)
             {
                 buttonCancelSearch.Enabled = false;
                 gecko.CancelDump = true;
             }
-            */
         }
 
         // Selectively disable specific types of controls
@@ -3559,8 +3427,6 @@ namespace GeckoDotNet
 
         private void existingGCTCodeToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-            /*
             // If there is no selected existing code, make a new one
             if (GCTCodeList.SelectedItems.Count == 0)
             {
@@ -3628,13 +3494,10 @@ namespace GeckoDotNet
             GCTCodeList.Items[index].Selected = true;
 
             MainControl.SelectedTab = GCTPage;
-            */
         }
 
         private void buttonShowMem_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-            /*
             if (buttonShowMem.Text == "Show Mem")
             {
                 try
@@ -3663,13 +3526,10 @@ namespace GeckoDotNet
                 bpHandler.BranchToggle();
                 UpdateShowMemColor();
             }
-            */
         }
 
         private void memViewGrid_CellMouseMove(object sender, DataGridViewCellMouseEventArgs e)
         {
-            throw new NotImplementedException();
-            /*
             // Avoid processing if the mouse isn't over an actual data cell
             if (e.ColumnIndex < 1) return;
             if (e.RowIndex < 0) return;
@@ -3701,13 +3561,10 @@ namespace GeckoDotNet
             hoverAddress += offset;
             // Pad with some white space so that the cell width doesn't change
             address.HeaderText = GlobalFunctions.toHex(hoverAddress, 8);
-            */
         }
 
         private void WalkToBLR()
         {
-            throw new NotImplementedException();
-            /*
             if (SteppingOut)
             {
                 SteppingOut = false;
@@ -3739,18 +3596,14 @@ namespace GeckoDotNet
             {
                 exceptionHandling.HandleException(exc);
             }
-            */
         }
 
         private void comboBoxDisplayType_SelectedIndexChanged(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-            /*
             search.DisplayType = comboBoxDisplayType.SelectedItem.ToString();
             comboBoxDisplayType.Update();
             search.UpdateGridViewPage();
             ResizeSearchResults();
-            */
         }
 
         private void SearchResults_ColumnDividerDoubleClick(object sender, DataGridViewColumnDividerDoubleClickEventArgs e)
@@ -3782,8 +3635,6 @@ namespace GeckoDotNet
 
         private void gCTWizardToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-            /*
             int indexToSelect = GCTCodeContents.Count;  // will pick "New Code"
             bool wasSelected = false;
             if (GCTCodeList.SelectedItems.Count != 0)
@@ -3830,13 +3681,10 @@ namespace GeckoDotNet
             {
                 GCTCodeList.Items[indexToSelect].Selected = true;
             }
-            */
         }
 
         private void gCTWizardToolStripMenuItemMemView_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-            /*
             int indexToSelect = GCTCodeContents.Count;  // will pick "New Code"
             bool wasSelected = false;
             if (GCTCodeList.SelectedItems.Count != 0)
@@ -3872,7 +3720,6 @@ namespace GeckoDotNet
             {
                 GCTCodeList.Items[indexToSelect].Selected = true;
             }
-            */
         }
 
         private void copyToolStripMenuItem_Click(object sender, EventArgs e)
@@ -3899,44 +3746,31 @@ namespace GeckoDotNet
 
         private void splitContainerRegASM_SplitterMoved(object sender, SplitterEventArgs e)
         {
-            throw new NotImplementedException();
-            /*
-            GeckoApp.Properties.Settings.Default.LastSplitterSize = splitContainerRegASM.SplitterDistance;
-            GeckoApp.Properties.Settings.Default.Save();
-            */
+            Properties.Settings.Default.LastSplitterSize = splitContainerRegASM.SplitterDistance;
+            Properties.Settings.Default.Save();
         }
 
         private void checkBoxPauseCodes_CheckedChanged(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-            /*
-            GeckoApp.Properties.Settings.Default.PauseCodes = checkBoxPauseCodes.Checked;
-            GeckoApp.Properties.Settings.Default.Save();
-            */
+            Properties.Settings.Default.PauseCodes = checkBoxPauseCodes.Checked;
+            Properties.Settings.Default.Save();
         }
 
         private void checkBoxBPNext_CheckedChanged(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-            /*
-            GeckoApp.Properties.Settings.Default.BPNext = checkBoxBPNext.Checked;
-            GeckoApp.Properties.Settings.Default.Save();
-            */
+            Properties.Settings.Default.BPNext = checkBoxBPNext.Checked;
+            Properties.Settings.Default.Save();
         }
 
         private void MainForm_ResizeEnd(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-            /*
-            GeckoApp.Properties.Settings.Default.LastSize = Size;
-            GeckoApp.Properties.Settings.Default.Save();
-            */
+            Properties.Settings.Default.LastWidth = Size.Width;
+            Properties.Settings.Default.LastHeight = Size.Height;
+            Properties.Settings.Default.Save();
         }
 
         private void memViewAValue_KeyDown(object sender, KeyEventArgs e)
         {
-            throw new NotImplementedException();
-            /*
             if (e.KeyCode == Keys.Up || e.KeyCode == Keys.Down || e.KeyCode == Keys.PageUp || e.KeyCode == Keys.PageDown)
             {
                 KeyEventArgs newArgs = new KeyEventArgs(e.KeyCode | Keys.Shift);
@@ -3952,7 +3786,6 @@ namespace GeckoDotNet
                     CenteredMemViewSelection(sender, e, address);
                 }
             }
-            */
         }
 
         private void vScrollBarMemViewGrid_Scroll(object sender, ScrollEventArgs e)
@@ -3992,23 +3825,17 @@ namespace GeckoDotNet
 
         private void disassemblerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-            /*
             DisRegion.Text = GlobalFunctions.toHex(viewer.selectedAddress);
 
             DisUpdateBtn_Click(sender, e);
 
             MainControl.SelectedTab = DisPage;
-            */
         }
 
         private void memoryViewerToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-            /*
             CenteredMemViewSelection(sender, e, disassembler.disAddress);
             MainControl.SelectedTab = MemView;
-            */
         }
 
         private void SortToolStripMenuItem_Click(object sender, EventArgs e)
@@ -4048,8 +3875,6 @@ namespace GeckoDotNet
 
         private void disableToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-            /*
             CodeContent code = GCTCodeContents[GCTCodeList.SelectedIndices[0]];
             CodeContent commentedCode = new CodeContent();
             for (int i = 0; i < code.lines.Count; i++)
@@ -4058,13 +3883,10 @@ namespace GeckoDotNet
             }
 
             GCTCodeValues.Text = CodeController.CodeContentToCodeTextBox(commentedCode);
-            */
         }
 
         private void enableToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-            /*
             CodeContent code = GCTCodeContents[GCTCodeList.SelectedIndices[0]];
             CodeContent uncommentedCode = new CodeContent();
             for (int i = 0; i < code.lines.Count; i++)
@@ -4073,7 +3895,6 @@ namespace GeckoDotNet
             }
 
             GCTCodeValues.Text = CodeController.CodeContentToCodeTextBox(uncommentedCode);
-            */
         }
 
         private void addToolStripMenuItem_Click(object sender, EventArgs e)
@@ -4236,10 +4057,7 @@ namespace GeckoDotNet
 
         private void UpdateBPCondValue()
         {
-            throw new NotImplementedException();
-            /*
             BPCondValue.Text = GlobalFunctions.toHex(bpHandler.GetRegisterValue(BPConditionRegSelect.SelectedIndex));
-            */
         }
 
         private void copyToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -4292,26 +4110,20 @@ namespace GeckoDotNet
 
         private void SRR0NEQToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-            /*
-            int reg = (int)GeckoApp.BPList.RegisterList.SRR0;
+            int reg = (int)BPList.RegisterList.SRR0;
             BreakpointCondition cond = new BreakpointCondition(
                 reg, bpHandler.GetRegisterValue(reg), BreakpointComparison.NotEqual);
 
             bpHandler.conditions.Add(cond);
-            */
         }
 
         private void SRR0EQToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-            /*
-            int reg = (int)GeckoApp.BPList.RegisterList.SRR0;
+            int reg = (int)BPList.RegisterList.SRR0;
             BreakpointCondition cond = new BreakpointCondition(
                  reg, bpHandler.GetRegisterValue(reg), BreakpointComparison.Equal);
 
             bpHandler.conditions.Add(cond);
-            */
         }
 
         private void copyToolStripMenuItem3_Click(object sender, EventArgs e)
@@ -4344,8 +4156,6 @@ namespace GeckoDotNet
 
         private void SetConditionGroupTextBox_KeyDown(object sender, KeyEventArgs e)
         {
-            throw new NotImplementedException();
-            /*
             if (e.KeyCode == Keys.Enter)
             {
                 List<int> indices = new List<int>();
@@ -4360,13 +4170,10 @@ namespace GeckoDotNet
                 }
                 BPCondMenu.Hide();
             }
-            */
         }
 
         private void BPCondMenu_Opened(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-            /*
             int index = BPCondList.SelectedIndex;
             String newText;
 
@@ -4379,7 +4186,6 @@ namespace GeckoDotNet
                 newText = bpHandler.conditions.GetIndexedConditionGroup(BPCondList.SelectedIndex).ToString();
             }
             SetConditionGroupTextBox.Text = newText;
-            */
         }
 
         private void SetConditionGroupTextBox_TextChanged(object sender, EventArgs e)
@@ -4407,8 +4213,6 @@ namespace GeckoDotNet
 
         private void pasteToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-            /*
             String[] sep = Clipboard.GetText().Split(new char[] { '\r', '\n' });
             foreach (String entry in sep)
             {
@@ -4418,7 +4222,6 @@ namespace GeckoDotNet
                     bpHandler.conditions.Add(cond);
                 }
             }
-            */
         }
 
         private void copyToolStripMenuItem4_Click(object sender, EventArgs e)
@@ -4433,8 +4236,6 @@ namespace GeckoDotNet
 
         private void buttonStepUntil_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-            /*
             if (SteppingUntil)
             {
                 SteppingUntil = false;
@@ -4473,15 +4274,11 @@ namespace GeckoDotNet
                 SteppingUntil = false;
                 buttonStepUntil_Click(sender, e);
             }
-            */
         }
 
         private void checkBoxBPCondEnable_CheckedChanged(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-            /*
             bpHandler.conditions.Enabled = checkBoxBPCondEnable.Checked;
-            */
         }
 
         private void checkBoxLogSteps_CheckedChanged(object sender, EventArgs e)
@@ -4511,8 +4308,6 @@ namespace GeckoDotNet
 
         private void buttonUndoSearch_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-            /*
             DialogResult confirmationPrompt = MessageBox.Show("Are you sure you want to undo?", "Confirm Undo", MessageBoxButtons.OKCancel);
             if (confirmationPrompt == DialogResult.OK)
             {
@@ -4520,13 +4315,10 @@ namespace GeckoDotNet
             }
 
             buttonUndoSearch.Enabled = search.CanUndo();
-            */
         }
 
         private void numericUpDownNewSearchIndex_ValueChanged(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-            /*
             if (numericUpDownNewSearchIndex.Value > search.DumpNum)
             {
                 numericUpDownNewSearchIndex.Value = search.DumpNum;
@@ -4538,14 +4330,11 @@ namespace GeckoDotNet
                 search.UpdateGridViewPage(false);
             }
             UpdateValueTypeDropDown();
-            */
         }
 
 
         private void numericUpDownOldSearchIndex_ValueChanged(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-            /*
             if (numericUpDownOldSearchIndex.Value > search.DumpNum - 1)
             {
                 if (search.DumpNum == 0)
@@ -4563,13 +4352,10 @@ namespace GeckoDotNet
                 search.UpdateGridViewPage(false);
             }
             UpdateValueTypeDropDown();
-            */
         }
 
         private void buttonAddSearchGroup_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-            /*
             UInt32 lValue;
             if (!GlobalFunctions.tryToHex(textBoxComparisonValue.Text, out lValue))
             {
@@ -4579,7 +4365,6 @@ namespace GeckoDotNet
             searchComparisons.Add(new SearchComparisonInfo(GetCmpType(), lValue, GetCmpRHS()));
             SearchGroupIndex = searchComparisons.Count - 1;
             groupBoxSearchGroups.Text = "Search Groups (" + searchComparisons.Count + ")";
-            */
         }
 
         private int SearchGroupIndex
@@ -4596,8 +4381,6 @@ namespace GeckoDotNet
 
         private void buttonRemoveGroup_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-            /*
             if (searchComparisons.Count > 1)
             {
                 searchComparisons.RemoveAt(SearchGroupIndex);
@@ -4607,38 +4390,30 @@ namespace GeckoDotNet
                 SearchGroupIndex = searchComparisons.Count - 1;
             }
             groupBoxSearchGroups.Text = "Search Groups (" + searchComparisons.Count + ")";
-            */
         }
 
         private void buttonClearSearchGroup_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-            /*
             while (searchComparisons.Count > 1)
             {
                 searchComparisons.RemoveAt(1);
             }
             SearchGroupIndex = 0;
             groupBoxSearchGroups.Text = "Search Groups (" + searchComparisons.Count + ")";
-            */
         }
 
         private void lowerValue_TextChanged(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-            /*
             UInt32 value;
             if (GlobalFunctions.tryToHex(textBoxComparisonValue.Text, out value))
             {
                 searchComparisons[SearchGroupIndex].value = value;
             }
-            */
         }
 
         private void numericUpDownSearchGroup_ValueChanged(object sender, EventArgs e)
         {
             throw new NotImplementedException();
-            /*
             Int32 value = SearchGroupIndex;
             if (value >= searchComparisons.Count)
             {
@@ -4649,7 +4424,6 @@ namespace GeckoDotNet
             SetCmpRHS(comp.searchType);
             SetCmpType(comp.comparisonType);
             textBoxComparisonValue.Text = GlobalFunctions.toHex(comp.value);
-            */
         }
 
         private void GCTCodeValues_KeyDown(object sender, KeyEventArgs e)
@@ -4662,17 +4436,12 @@ namespace GeckoDotNet
 
         private void setSRR0HereToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-            /*
             bpHandler.SetSRR0(disassembler.disAddress);
             MainControl.SelectedTab = BreakpointPage;
-            */
         }
 
         private void ShowMemContextMenu_Opening(object sender, CancelEventArgs e)
         {
-            throw new NotImplementedException();
-            /*
             if (ValidMemory.validAddress(bpHandler.MemoryAddress))
             {
                 toolStripTextBoxShowMemAddress.Text = GlobalFunctions.toHex(bpHandler.MemoryAddress);
@@ -4684,7 +4453,6 @@ namespace GeckoDotNet
                 toolStripTextBoxShowMemValue.Text = "00000000";
                 //e.Cancel = true;
             }
-            */
         }
 
         private void ShowMemAddressToolStripMenuItem_Click(object sender, EventArgs e)
@@ -4737,8 +4505,6 @@ namespace GeckoDotNet
 
         private void ParseStackFrame(uint stackPointer, out uint LRSaveWord, ref uint nextFramePointer)
         {
-            throw new NotImplementedException();
-            /*
             LRSaveWord = 0;
             nextFramePointer = 0;
             try
@@ -4761,15 +4527,12 @@ namespace GeckoDotNet
             {
                 exceptionHandling.HandleException(exc);
             }
-            */
         }
 
         private void stackFrameToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-            /*
             uint LRSaveWord = 0;
-            uint nextFramePointer = bpHandler.GetRegisterValue((int)GeckoApp.BPList.RegisterList.r1);
+            uint nextFramePointer = bpHandler.GetRegisterValue((int)BPList.RegisterList.r1);
             ParseStackFrame(nextFramePointer, out LRSaveWord, ref nextFramePointer);
 
             try
@@ -4787,18 +4550,15 @@ namespace GeckoDotNet
             {
                 exceptionHandling.HandleException(exc);
             }
-            */
         }
 
         private void leafToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-            /*
             try
             {
                 if (gecko.status() == WiiStatus.Breakpoint)
                 {
-                    if (bpHandler.SetBreakpoint(bpHandler.GetRegisterValue((int)GeckoApp.BPList.RegisterList.LR), BreakpointType.Execute, true))
+                    if (bpHandler.SetBreakpoint(bpHandler.GetRegisterValue((int)BPList.RegisterList.LR), BreakpointType.Execute, true))
                     {
                         BPMode(true);
                     }
@@ -4809,7 +4569,6 @@ namespace GeckoDotNet
             {
                 exceptionHandling.HandleException(exc);
             }
-            */
         }
 
         private uint RecursivePromptDisassemblySearch(uint searchStartAddress, bool searchDown, string regex, int count)
@@ -4847,8 +4606,6 @@ namespace GeckoDotNet
 
         private void buttonDisassemblySearch_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-            /*
             if (SearchingDisassembly)
             {
                 SearchingDisassembly = false;
@@ -4904,15 +4661,12 @@ namespace GeckoDotNet
 
             SearchingDisassembly = false;
             buttonDisassemblySearch.Text = "Search";
-            */
         }
 
         public uint FindRegexAddressInDisassembly(ref uint searchStartAddress, bool searchDown, string regex, int count)
         {
             uint disassemblyStartAddress;
             uint retVal = 0;
-            throw new NotImplementedException();
-            /*
             string[] searchDisassemblyStrings;
             disassemblyStartAddress = searchStartAddress + 4;
             if (!searchDown)
@@ -4978,7 +4732,6 @@ namespace GeckoDotNet
                 }
 
             }
-            */
             return retVal;
         }
 
@@ -5011,8 +4764,6 @@ namespace GeckoDotNet
 
         private void copyFunctionToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-            /*
             uint searchStartAddress;
             if (!AsAddress.IsValidGet(out searchStartAddress))
             {
@@ -5036,13 +4787,10 @@ namespace GeckoDotNet
             }
 
             Clipboard.SetText(BigDisassemblyString);
-            */
         }
 
         private void toolStripTextBoxShowMemValue_KeyDown(object sender, KeyEventArgs e)
         {
-            throw new NotImplementedException();
-            /*
             if (e.KeyCode == Keys.Enter && !e.Control)
             {
                 e.Handled = true;
@@ -5054,7 +4802,6 @@ namespace GeckoDotNet
                     gecko.poke(address, value);
                 }
             }
-            */
         }
 
         private void ChangeMemViewFontSize(float newSize)
@@ -5096,16 +4843,14 @@ namespace GeckoDotNet
 
         private void toolStripTextBoxMemViewFontSize_KeyDown(object sender, KeyEventArgs e)
         {
-            throw new NotImplementedException();
-            /*
             if (e.KeyCode == Keys.Enter)
             {
                 try
                 {
                     float casted = Convert.ToSingle(toolStripTextBoxMemViewFontSize.Text);
                     ChangeMemViewFontSize(casted);
-                    GeckoApp.Properties.Settings.Default.MemViewFontSize = casted;
-                    GeckoApp.Properties.Settings.Default.Save();
+                    Properties.Settings.Default.MemViewFontSize = casted;
+                    Properties.Settings.Default.Save();
                     memViewContextMenu.Close();
                 }
                 catch (FormatException)
@@ -5113,7 +4858,6 @@ namespace GeckoDotNet
                     toolStripTextBoxMemViewFontSize.Text = (10).ToString();
                 }
             }
-            */
         }
 
         private void fontSizeToolStripMenuItem_MouseMove(object sender, MouseEventArgs e)
@@ -5124,12 +4868,9 @@ namespace GeckoDotNet
 
         private void viewFloatsInHexToolStripMenuItem_CheckedChanged(object sender, EventArgs e)
         {
-            throw new NotImplementedException();
-            /*
             bpHandler.ShowFloatsInHex = viewFloatsInHexToolStripMenuItem.Checked;
-            GeckoApp.Properties.Settings.Default.ViewFloatsInHex = viewFloatsInHexToolStripMenuItem.Checked;
-            GeckoApp.Properties.Settings.Default.Save();
-            */
+            Properties.Settings.Default.ViewFloatsInHex = viewFloatsInHexToolStripMenuItem.Checked;
+            Properties.Settings.Default.Save();
         }
 
         private void IntelligentStepOut()
@@ -5146,15 +4887,13 @@ namespace GeckoDotNet
 
         private uint IsLeafFunction()
         {
-            throw new NotImplementedException();
-            /*
             try
             {
                 if (gecko.status() == WiiStatus.Breakpoint)
                 {
                     // Get the LR and current address and its ASM
-                    uint potentialBLAddress = bpHandler.GetRegisterValue((int)GeckoApp.BPList.RegisterList.LR) - 4;
-                    uint currentAddress = bpHandler.GetRegisterValue((int)GeckoApp.BPList.RegisterList.SRR0);
+                    uint potentialBLAddress = bpHandler.GetRegisterValue((int)BPList.RegisterList.LR) - 4;
+                    uint currentAddress = bpHandler.GetRegisterValue((int)BPList.RegisterList.SRR0);
                     string[] asmArray = disassembler.Disassemble(potentialBLAddress, 1);
                     string asm = string.Empty;
                     if (asmArray.Length > 0) asm = asmArray[0];
@@ -5189,7 +4928,6 @@ namespace GeckoDotNet
             {
                 exceptionHandling.HandleException(exc);
             }
-            */
             return 0;
         }
 
@@ -5209,24 +4947,21 @@ namespace GeckoDotNet
         {
             List<uint> callStack = new List<uint>();
 
-            throw new NotImplementedException();
-            /*
             // First add the current address
-            uint address = bpHandler.GetRegisterValue((int)GeckoApp.BPList.RegisterList.SRR0);
+            uint address = bpHandler.GetRegisterValue((int)BPList.RegisterList.SRR0);
             if (address != 0) callStack.Add(address);
 
             // Then, if it is a leaf function, add it's LR
             address = IsLeafFunction();
             if (address != 0) callStack.Add(address - 4);
 
-            uint stackPointer = bpHandler.GetRegisterValue((int)GeckoApp.BPList.RegisterList.r1);
+            uint stackPointer = bpHandler.GetRegisterValue((int)BPList.RegisterList.r1);
 
             do
             {
                 ParseStackFrame(stackPointer, out address, ref stackPointer);
                 if (address != 0) callStack.Add(address - 4);
             } while (stackPointer != 0);
-            */
             return callStack;
         }
 
