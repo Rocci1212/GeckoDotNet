@@ -53,11 +53,18 @@
       <DependentUpon>BPList.cs</DependentUpon>
     </Compile>
     <Compile Include="Breakpoints.cs" />
+    <Compile Include="CodeController.cs" />
     <Compile Include="D2XXWrapper.cs" />
     <Compile Include="Disassembly.cs" />
     <Compile Include="ExceptionHandler.cs" />
     <Compile Include="external\Xml.cs" />
     <Compile Include="FST.cs" />
+    <Compile Include="GCTWizard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="GCTWizard.Designer.cs">
+      <DependentUpon>GCTWizard.cs</DependentUpon>
+    </Compile>
     <Compile Include="HistoryTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -66,6 +73,31 @@
     </Compile>
     <Compile Include="IconHelper.cs" />
     <Compile Include="MemoryAreas.cs" />
+    <Compile Include="Notepad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Notepad.Designer.cs">
+      <DependentUpon>Notepad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NotePage.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="NotePage.Designer.cs">
+      <DependentUpon>NotePage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="NoteSheet.cs" />
+    <Compile Include="ValueInput.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ValueInput.Designer.cs">
+      <DependentUpon>ValueInput.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WatchDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WatchDialog.Designer.cs">
+      <DependentUpon>WatchDialog.cs</DependentUpon>
+    </Compile>
     <Compile Include="WatchList.cs" />
     <Compile Include="external\Config.cs" />
     <Compile Include="external\Events.cs" />

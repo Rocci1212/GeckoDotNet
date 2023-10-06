@@ -38,32 +38,23 @@ namespace GeckoDotNet
         private WatchList watcher;
         private FST fst;
         private ExceptionHandler exceptionHandling;
-        /*
         private WatchDialog addWatchDialog;
         private ValueInput watchValueInput;
-        */
         private List<UInt32> multiPokeAddr;
 
         private String gamename;
         private bool GameNameStored;
-        /*
-        private Xml SettingsFile;
 
         private CodeController GCTCodeContents;
-        */
         private List<Control> WasAlreadyDisabled;
-        /*
         private List<SearchComparisonInfo> searchComparisons;
 
         private TabPage TabLock;
-        */
         private AddressTextBox AddressContextMenuOwner;
         private HistoryTextBox HistoryContextMenuOwner;
-        /*
         private NoteSheets notes;
-
+        
         private GCTWizard codeWizard;
-        */
         private TextWriter BPStepLogWriter;
 
         private bool Connecting;
@@ -172,7 +163,7 @@ namespace GeckoDotNet
             SetComboboxValue("Screenshots", "Format", 0, ImgFormat);
             SetComboboxValue("Screenshots", "Sizing", 0, ShotSizingType);
 
-            int value = SettingsFile.GetValue("Screenshots", "JPEGQuality", 85);
+            int value = Properties.Settings.Default.ScreenshotJpegQuality;
             if (value < 0 || value > 100)
                 value = 85;
             JPGQual.Value = value;
@@ -218,7 +209,7 @@ namespace GeckoDotNet
             MainControl.SelectedTab = BreakpointPage;
             MainControl.SelectedTab = searchPage;
             splitContainerRegASM.SplitterDistance = oldSplitter;
-            toolStripTextBoxMemViewFontSize.Text = GeckoApp.Properties.Settings.Default.MemViewFontSize.ToString();
+            toolStripTextBoxMemViewFontSize.Text = Properties.Settings.Default.MemViewFontSize.ToString();
             toolStripTextBoxMemViewFontSize_KeyDown(null, new KeyEventArgs(Keys.Enter));
             viewFloatsInHexToolStripMenuItem.Checked = Properties.Settings.Default.ViewFloatsInHex;
             //addressTextBox1.CopyStringToHistory(GeckoApp.Properties.Settings.Default.addressHistory);
@@ -5260,8 +5251,6 @@ namespace GeckoDotNet
 
         private void LoadCallStack()
         {
-            throw new NotImplementedException();
-            /*
             if (gecko.status() == WiiStatus.Breakpoint)
             {
                 listBoxCallStack.Items.Clear();
@@ -5278,7 +5267,6 @@ namespace GeckoDotNet
             {
                 MessageBox.Show("Must be in a breakpoint to show call stack");
             }
-            */
         }
 
         private void gotoFunctionStartToolStripMenuItem_Click(object sender, EventArgs e)

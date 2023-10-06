@@ -130,5 +130,29 @@ namespace GeckoDotNet.Properties {
                 this["ViewFloatsInHex"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public short MemViewFontSize {
+            get {
+                return ((short)(this["MemViewFontSize"]));
+            }
+            set {
+                this["MemViewFontSize"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("85")]
+        public short ScreenshotJpegQuality {
+            get {
+                return ((short)(this["ScreenshotJpegQuality"]));
+            }
+            set {
+                this["ScreenshotJpegQuality"] = value;
+            }
+        }
     }
 }
