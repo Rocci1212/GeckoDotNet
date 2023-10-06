@@ -29,7 +29,7 @@
  */
 
 
-using GeckoDotNet.external.AMS.Profile;
+using AMS.Profile;
 using System;
 using System.Data;
 using System.Reflection;

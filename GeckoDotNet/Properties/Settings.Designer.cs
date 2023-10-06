@@ -118,5 +118,17 @@ namespace GeckoDotNet.Properties {
                 this["LastSplitterSize"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        public bool ViewFloatsInHex {
+            get {
+                return ((bool)(this["ViewFloatsInHex"]));
+            }
+            set {
+                this["ViewFloatsInHex"] = value;
+            }
+        }
     }
 }

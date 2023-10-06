@@ -36,9 +36,7 @@ namespace GeckoDotNet
         private Breakpoints bpHandler;
         private Disassembly disassembler;
         private WatchList watcher;
-        /*
         private FST fst;
-        */
         private ExceptionHandler exceptionHandling;
         /*
         private WatchDialog addWatchDialog;
@@ -222,7 +220,7 @@ namespace GeckoDotNet
             splitContainerRegASM.SplitterDistance = oldSplitter;
             toolStripTextBoxMemViewFontSize.Text = GeckoApp.Properties.Settings.Default.MemViewFontSize.ToString();
             toolStripTextBoxMemViewFontSize_KeyDown(null, new KeyEventArgs(Keys.Enter));
-            viewFloatsInHexToolStripMenuItem.Checked = GeckoApp.Properties.Settings.Default.ViewFloatsInHex;
+            viewFloatsInHexToolStripMenuItem.Checked = Properties.Settings.Default.ViewFloatsInHex;
             //addressTextBox1.CopyStringToHistory(GeckoApp.Properties.Settings.Default.addressHistory);
             //addressTextBox1.AutoHistory = true;
         }

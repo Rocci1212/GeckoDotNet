@@ -178,8 +178,8 @@ namespace GeckoDotNet
             switch (blength)
             {
                 case 1: result = (UInt32)buffer[0]; break;
-                case 2: result = (UInt32)USBGecko.Swap((UInt16)BitConverter.ToUInt16(buffer, 0)); break;
-                default: result = (UInt32)USBGecko.Swap(BitConverter.ToUInt32(buffer, 0)); break;
+                case 2: result = (UInt32)ByteSwap.Swap((UInt16)BitConverter.ToUInt16(buffer, 0)); break;
+                default: result = (UInt32)ByteSwap.Swap(BitConverter.ToUInt32(buffer, 0)); break;
             }
 
             return result;

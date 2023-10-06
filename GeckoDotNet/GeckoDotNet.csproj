@@ -52,26 +52,41 @@
     <Compile Include="BPList.Designer.cs">
       <DependentUpon>BPList.cs</DependentUpon>
     </Compile>
+    <Compile Include="Breakpoints.cs" />
     <Compile Include="D2XXWrapper.cs" />
+    <Compile Include="Disassembly.cs" />
+    <Compile Include="ExceptionHandler.cs" />
+    <Compile Include="external\Xml.cs" />
+    <Compile Include="FST.cs" />
     <Compile Include="HistoryTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="HistoryTextBox.Designer.cs">
       <DependentUpon>HistoryTextBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="IconHelper.cs" />
     <Compile Include="MemoryAreas.cs" />
-    <None Include="external\Config.cs" />
-    <None Include="external\Events.cs" />
-    <None Include="external\IProfile.cs" />
-    <None Include="external\Profile.cs" />
-    <None Include="external\Xml.cs" />
-    <None Include="external\XmlHelper.cs" />
+    <Compile Include="WatchList.cs" />
+    <Compile Include="external\Config.cs" />
+    <Compile Include="external\Events.cs" />
+    <Compile Include="external\IProfile.cs" />
+    <Compile Include="external\Profile.cs" />
+    <Compile Include="external\XmlHelper.cs" />
     <Compile Include="AddressTextBox.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="AddressTextBox.Designer.cs">
       <DependentUpon>AddressTextBox.cs</DependentUpon>
     </Compile>
+    <Compile Include="MemoryViewer.cs" />
+    <Compile Include="MemSearch.cs" />
+    <Compile Include="RegisterDialog.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegisterDialog.Designer.cs">
+      <DependentUpon>RegisterDialog.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SearchHistoryManager.cs" />
     <Compile Include="USBGecko.cs" />
     <Compile Include="GlobalFunctions.cs" />
     <Compile Include="MainForm.cs">
