@@ -12,7 +12,7 @@ namespace GeckoDotNet.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.0.3.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("Microsoft.VisualStudio.Editors.SettingsDesigner.SettingsSingleFileGenerator", "17.7.0.0")]
     internal sealed partial class Settings : global::System.Configuration.ApplicationSettingsBase {
         
         private static Settings defaultInstance = ((Settings)(global::System.Configuration.ApplicationSettingsBase.Synchronized(new Settings())));
@@ -146,9 +146,9 @@ namespace GeckoDotNet.Properties {
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("85")]
-        public short ScreenshotJpegQuality {
+        public int ScreenshotJpegQuality {
             get {
-                return ((short)(this["ScreenshotJpegQuality"]));
+                return ((int)(this["ScreenshotJpegQuality"]));
             }
             set {
                 this["ScreenshotJpegQuality"] = value;
@@ -188,6 +188,30 @@ namespace GeckoDotNet.Properties {
             }
             set {
                 this["DisAsmAddr"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int ScreenshotSizing {
+            get {
+                return ((int)(this["ScreenshotSizing"]));
+            }
+            set {
+                this["ScreenshotSizing"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        public int ScreenshotFormat {
+            get {
+                return ((int)(this["ScreenshotFormat"]));
+            }
+            set {
+                this["ScreenshotFormat"] = value;
             }
         }
     }

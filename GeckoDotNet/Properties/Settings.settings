@@ -32,7 +32,7 @@
     <Setting Name="MemViewFontSize" Type="System.Single" Scope="User">
       <Value Profile="(Default)">0</Value>
     </Setting>
-    <Setting Name="ScreenshotJpegQuality" Type="System.Int16" Scope="User">
+    <Setting Name="ScreenshotJpegQuality" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">85</Value>
     </Setting>
     <Setting Name="LastWidth" Type="System.Int32" Scope="User">
@@ -43,6 +43,12 @@
     </Setting>
     <Setting Name="DisAsmAddr" Type="System.String" Scope="User">
       <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="ScreenshotSizing" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="ScreenshotFormat" Type="System.Int32" Scope="User">
+      <Value Profile="(Default)">0</Value>
     </Setting>
   </Settings>
 </SettingsFile>

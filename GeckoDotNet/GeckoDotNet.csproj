@@ -92,6 +92,7 @@
       <DependentUpon>NotePage.cs</DependentUpon>
     </Compile>
     <Compile Include="NoteSheet.cs" />
+    <Compile Include="ScreenShots.cs" />
     <Compile Include="ValueInput.cs">
       <SubType>Form</SubType>
     </Compile>
