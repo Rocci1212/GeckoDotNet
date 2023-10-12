@@ -25,7 +25,7 @@ namespace GeckoDotNet.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool AlwaysOnTop {
             get {
                 return ((bool)(this["AlwaysOnTop"]));
@@ -37,7 +37,7 @@ namespace GeckoDotNet.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("6.0")]
         public decimal FPS {
             get {
                 return ((decimal)(this["FPS"]));
@@ -49,7 +49,7 @@ namespace GeckoDotNet.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("801DEC10")]
         public string BPAddr {
             get {
                 return ((string)(this["BPAddr"]));
@@ -61,7 +61,7 @@ namespace GeckoDotNet.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("801DEC10")]
         public string MemViewAddr {
             get {
                 return ((string)(this["MemViewAddr"]));
@@ -109,7 +109,7 @@ namespace GeckoDotNet.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("183")]
         public int LastSplitterSize {
             get {
                 return ((int)(this["LastSplitterSize"]));
@@ -121,7 +121,7 @@ namespace GeckoDotNet.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("False")]
+        [global::System.Configuration.DefaultSettingValueAttribute("True")]
         public bool ViewFloatsInHex {
             get {
                 return ((bool)(this["ViewFloatsInHex"]));
@@ -133,7 +133,7 @@ namespace GeckoDotNet.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("8.75")]
         public float MemViewFontSize {
             get {
                 return ((float)(this["MemViewFontSize"]));
@@ -157,7 +157,7 @@ namespace GeckoDotNet.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("591")]
         public int LastWidth {
             get {
                 return ((int)(this["LastWidth"]));
@@ -169,7 +169,7 @@ namespace GeckoDotNet.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("0")]
+        [global::System.Configuration.DefaultSettingValueAttribute("441")]
         public int LastHeight {
             get {
                 return ((int)(this["LastHeight"]));
@@ -181,7 +181,7 @@ namespace GeckoDotNet.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        [global::System.Configuration.DefaultSettingValueAttribute("80562A6C")]
         public string DisAsmAddr {
             get {
                 return ((string)(this["DisAsmAddr"]));

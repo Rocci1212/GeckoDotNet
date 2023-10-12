@@ -3,16 +3,16 @@
   <Profiles />
   <Settings>
     <Setting Name="AlwaysOnTop" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
+      <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="FPS" Type="System.Decimal" Scope="User">
-      <Value Profile="(Default)">0</Value>
+      <Value Profile="(Default)">6.0</Value>
     </Setting>
     <Setting Name="BPAddr" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">801DEC10</Value>
     </Setting>
     <Setting Name="MemViewAddr" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">801DEC10</Value>
     </Setting>
     <Setting Name="BPType" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
@@ -24,25 +24,25 @@
       <Value Profile="(Default)">False</Value>
     </Setting>
     <Setting Name="LastSplitterSize" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">0</Value>
+      <Value Profile="(Default)">183</Value>
     </Setting>
     <Setting Name="ViewFloatsInHex" Type="System.Boolean" Scope="User">
-      <Value Profile="(Default)">False</Value>
+      <Value Profile="(Default)">True</Value>
     </Setting>
     <Setting Name="MemViewFontSize" Type="System.Single" Scope="User">
-      <Value Profile="(Default)">0</Value>
+      <Value Profile="(Default)">8.75</Value>
     </Setting>
     <Setting Name="ScreenshotJpegQuality" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">85</Value>
     </Setting>
     <Setting Name="LastWidth" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">0</Value>
+      <Value Profile="(Default)">591</Value>
     </Setting>
     <Setting Name="LastHeight" Type="System.Int32" Scope="User">
-      <Value Profile="(Default)">0</Value>
+      <Value Profile="(Default)">441</Value>
     </Setting>
     <Setting Name="DisAsmAddr" Type="System.String" Scope="User">
-      <Value Profile="(Default)" />
+      <Value Profile="(Default)">80562A6C</Value>
     </Setting>
     <Setting Name="ScreenshotSizing" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>

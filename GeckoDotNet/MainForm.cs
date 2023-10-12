@@ -160,8 +160,8 @@ namespace GeckoDotNet
 
             comboBoxPokeOperation.SelectedIndex = 0;
 
-            SetComboboxValue("Screenshots", "Format", 0, ImgFormat);
-            SetComboboxValue("Screenshots", "Sizing", 0, ShotSizingType);
+            SetComboboxValue("ScreenshotFormat", 0, ImgFormat);
+            SetComboboxValue("ScreenshotSizing", 0, ShotSizingType);
 
             int value = Properties.Settings.Default.ScreenshotJpegQuality;
             if (value < 0 || value > 100)
@@ -226,16 +226,13 @@ namespace GeckoDotNet
         #endregion
 
         #region Core functionality
-        private void SetComboboxValue(String section, String entry, int defaultValue, ComboBox box)
+        private void SetComboboxValue(String property, int defaultValue, ComboBox box)
         {
-            throw new NotImplementedException();
-            /*
             int maxIndex = box.Items.Count;
-            int value = SettingsFile.GetValue(section, entry, defaultValue);
+            int value = Convert.ToInt32(Properties.Settings.Default[property]);
             if (value < 0 || value >= maxIndex)
                 value = defaultValue;
             box.SelectedIndex = value;
-            */
         }
 
         public void FormStop(bool enable)
